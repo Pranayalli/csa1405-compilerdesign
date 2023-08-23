@@ -85,3 +85,15 @@ int main() {
 
     return 0;
 }
+
+
+
+output:
+Thread B acquired mutexB
+Thread B acquired mutexA
+Thread A acquired mutexA
+Thread A acquired mutexB
+
+
+...Program finished with exit code 0
+Press ENTER to exit console.
