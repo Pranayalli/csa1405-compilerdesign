@@ -89,10 +89,23 @@ int main() {
 
 
 output:
-Thread B acquired mutexB
-Thread B acquired mutexA
-Thread A acquired mutexA
-Thread A acquired mutexB
+xor    edx, edx
+       mov    eax, 1 
+       mov    ecx, edx
+       mov    r8d, edx
+       mov    r9d, edx
+       npad   13
+$LL3@main:
+       inc    r9
+       add    r8, 2
+       add    rcx, 3
+       add    r9, rax                           ;; r9  = 2  8 18 32 50 …
+       add    r8, rax                           ;; r8  = 3 10 21 36 55 …
+       add    rcx, rax                          ;; rcx = 4 12 24 40 60 …
+       add    rdx, rax                          ;; rdx = 1  6 15 28 45 …
+       add    rax, 4                            ;; rax = 1  5  9 13 17 …
+       cmp    rax, 1000000000                   ;; i <= 1000000000 ?
+       jle    SHORT $LL3@main                   ;; yes, so loop back
 
 
 ...Program finished with exit code 0
