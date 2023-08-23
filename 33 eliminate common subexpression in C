@@ -90,3 +90,10 @@ int main() {
 
     return 0;
 }
+
+
+
+output:
+Enter an arithmetic expression with spaces between each token: a + b = c
+Original expression: 0.000000 + 0.0000000.0000000.000000
+Expression after eliminating common subexpressions: 0.000000
