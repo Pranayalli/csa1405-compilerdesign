@@ -1,0 +1,58 @@
+digit [0-9]
+%{
+int cons=0;
+%}
+%%
+{digit}+ { cons++; printf("%s is a constant\n", yytext);  }
+.|\n { }
+%%
+int yywrap(void) {
+return 1; }
+int main(void)
+{
+FILE *f;
+char file[10];
+printf("Enter File Name : ");
+scanf("%s",file);
+f = fopen(file,"r");
+yyin = f;
+yylex();
+printf("Number of Constants : %d\n", cons);
+fclose(yyin);  
+}
+
+
+
+
+
+C:\Users\BHASKAR GOWD>set path=C:\Program Files (x86)\GnuWin32\bin
+
+C:\Users\BHASKAR GOWD>flex 37.constant.l.txt
+
+C:\Users\BHASKAR GOWD>set path=C:\MinGW\bin
+
+C:\Users\BHASKAR GOWD>gcc lex.yy.c
+
+C:\Users\BHASKAR GOWD>a
+
+Enter File Name : sample.c
+
+1 is a constant
+
+2 is a constant
+
+1 is a constant
+
+2 is a constant
+
+1 is a constant
+
+2 is a constant
+
+1 is a constant
+
+2 is a constant
+
+0 is a constant
+
+Number of Constants: 9
